@@ -30,6 +30,22 @@ def binarySearch(sortedarray, item):
     # if the item isn't in the input array, return None
     return None
 
+def binarySearch2(sortedarray, item):
+    l, h = 0, len(sortedarray) - 1
+
+    while l <= h:
+        m = l + ((h - l) // 2) # sometimes, (l + h) // 2 can produce an overflow if the input array is too large
+
+        if sortedarray[m] > item:
+            h = m - 1
+        elif sortedarray[m] < item:
+            l = m + 1
+        else:
+            return m
+    return None
+
+
+
 
 # test
 list1 = [1,3,5,7,9]
@@ -38,3 +54,8 @@ for i in range (1, 100):
     list2.append(i)
 print(binarySearch(list1, 3))
 print(binarySearch(list2, 99))
+
+# test 2 with optimized solution
+list3 = [1, 3, 4, 5, 7, 9, 10, 15, 20]
+
+print(binarySearch2(list3, 4))
